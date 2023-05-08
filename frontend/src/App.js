@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Header from './components/Header'
+import Search from './components/Search'
+import {useState } from 'react';
 
-function App() {
+
+
+const App = () =>  {
+  const [word,setWord] = useState('')
+  const handleSearchSubmit = (e) =>{
+    e.preventDefault()
+    console.log(word)
+  }
+  
+  console.log(word) //anytime when the state of the component is change, the component is rerendered
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header title="Images Gallery"/>
+      <Search  setWord={setWord} word={word} handleSubmit={handleSearchSubmit}/>
     </div>
   );
 }
