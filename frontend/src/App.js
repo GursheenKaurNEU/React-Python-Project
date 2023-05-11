@@ -4,6 +4,7 @@ import Search from "./components/Search";
 import ImageCard from "./components/ImageCard";
 import { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import Welcome from './components/Welcome';
 
 const UNSPLASH_KEY = process.env.REACT_APP_UNSPLASH_KEY;
 
@@ -45,15 +46,21 @@ const App = () => {
         images[0]
       } />} */}
       <Container className="mt-4">
-        <Row xs={1} lg={3} md={2}>
+        {
+          images.length ?   <Row xs={1} lg={3} md={2}>
           {images.map((image, i) => (
             <Col className="pb-3" key={i}>
               <ImageCard images={image}  deleteImage ={handleDelete}/>
             </Col>
           ))}
-        </Row>
+        </Row> :
+        <Welcome />
+        }
+      
       </Container>
+      
     </div>
+    
   );
 };
 
