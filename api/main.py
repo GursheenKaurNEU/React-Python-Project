@@ -1,4 +1,5 @@
 from flask import Flask,request;
+from flask_cors import CORS;
 import requests
 from dotenv import load_dotenv
 import os
@@ -18,6 +19,7 @@ if not REACT_APP_UNSPLASH_KEY:
 
 app= Flask(__name__)
 app.config['DEBUG'] = DEBUG
+CORS(app)
 # print(__name__)
 
 @app.route('/test')
@@ -36,7 +38,6 @@ def new_image():
         "query" : word
     }
     response = requests.get(url=UNSPLASH_API_URL, headers=headers,params=params)
-   
     return response.json()
 
 if __name__ == "__main__" :
