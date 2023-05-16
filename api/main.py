@@ -9,13 +9,15 @@ load_dotenv(dotenv_path="./.env.local")
 # print(os.environ.get('REACT_APP_UNSPLASH_KEY')) 
 UNSPLASH_API_URL='https://api.unsplash.com/photos/random/'
 REACT_APP_UNSPLASH_KEY=os.environ.get('REACT_APP_UNSPLASH_KEY','')
-
+DEBUG=bool(os.environ.get("DEBUG",True))
+print(DEBUG)
 
 
 if not REACT_APP_UNSPLASH_KEY:
     raise EnvironmentError("Please create .env.local file and insert UNSPLASH_KEY there")
 
 app= Flask(__name__)
+app.config['DEBUG'] = DEBUG
 # print(__name__)
 
 @app.route('/test')
