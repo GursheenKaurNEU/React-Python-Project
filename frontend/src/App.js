@@ -7,6 +7,8 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Welcome from './components/Welcome';
 
 const UNSPLASH_KEY = process.env.REACT_APP_UNSPLASH_KEY;
+const REACT_APP_URL = process.env.REACT_APP_URL || "http://localhost:5050"
+
 
 const App = () => {
   const [word, setWord] = useState("");
@@ -18,7 +20,8 @@ const App = () => {
 
     const response = await fetch(
       //fetch returns a promise
-      `https://api.unsplash.com/photos/random/?query=${word}&client_id=${UNSPLASH_KEY}`
+      // `https://api.unsplash.com/photos/random/?query=${word}&client_id=${UNSPLASH_KEY}`
+      `${REACT_APP_URL}/new-image?query=${word}`
     );
     const data = await response.json();
     setImages([{ ...data, title: word }, ...images]);
