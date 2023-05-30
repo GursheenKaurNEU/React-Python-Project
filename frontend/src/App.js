@@ -21,7 +21,7 @@ const App = () => {
     const response = await fetch(
       //fetch returns a promise
       // `https://api.unsplash.com/photos/random/?query=${word}&client_id=${UNSPLASH_KEY}`
-      `${REACT_APP_URL}/new-image?query=${word}`
+      `${REACT_APP_URL}/new-images?query=${word}`
     );
     const data = await response.json();
     setImages([{ ...data, title: word }, ...images]);

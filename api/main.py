@@ -27,7 +27,7 @@ def helloWorld():
     return "Hello World!"
 # set FLASK_APP=main.py flask run  
 
-@app.route('/new-image')
+@app.route('/new-images')
 def new_image():
     headers={
         'Accept-version': 'v1',
