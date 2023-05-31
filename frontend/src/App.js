@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./components/Header";
 import Search from "./components/Search";
 import ImageCard from "./components/ImageCard";
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Welcome from "./components/Welcome";
 import axios from "axios";
@@ -14,6 +14,19 @@ const App = () => {
   const [word, setWord] = useState("");
   const [images, setImages] = useState([]);
   // console.log(images);
+
+
+  const getImages = async () =>{
+      try{
+        const res = await axios.get(`${REACT_APP_URL}/images`)
+        setImages(res.data || [])
+      }
+      catch(error){
+        console.log(error)
+      }
+  }
+
+  useEffect(() =>  {getImages()},[])
 
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
