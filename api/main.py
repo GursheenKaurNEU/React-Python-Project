@@ -3,6 +3,7 @@ from flask_cors import CORS;
 import requests
 from dotenv import load_dotenv
 import os
+from mongo_client import insert_test_document
 
 
 
@@ -19,6 +20,7 @@ if not REACT_APP_UNSPLASH_KEY:
 
 app= Flask(__name__)
 app.config['DEBUG'] = DEBUG
+insert_test_document()
 CORS(app)
 # print(__name__)
 
